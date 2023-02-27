@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
-import { Header } from "../../components/Header";
-import { Summary } from "../../components/Summary";
-import { useTransactions } from "../../contexts/TransactionsContext";
-import { dateFormatter, priceFormatter } from "../../utils/formatter";
-import { SearchForm } from "./components/SearchForm";
+import { Header } from '../../components/Header'
+import { Summary } from '../../components/Summary'
+import { useTransactions } from '../../contexts/TransactionsContext'
+import { dateFormatter, priceFormatter } from '../../utils/formatter'
+import { SearchForm } from './components/SearchForm'
 import {
   TransactionsContainer,
   TransactionsTable,
   PriceHighlight,
-} from "./styles";
+} from './styles'
 
 export function Transactions() {
-  const { transactions } = useTransactions();
+  const { transactions } = useTransactions()
 
   return (
     <div>
@@ -23,22 +22,22 @@ export function Transactions() {
           <tbody>
             {transactions.map((transaction) => {
               const { id, category, price, type, description, createdAt } =
-                transaction;
+                transaction
               return (
                 <tr key={id}>
                   <td width="50%">{description}</td>
                   <PriceHighlight variant={type}>
-                    {type === 'outcome' && '- ' }
+                    {type === 'outcome' && '- '}
                     {priceFormatter.format(price)}
                   </PriceHighlight>
                   <td>{category}</td>
                   <td>{dateFormatter.format(new Date(createdAt))}</td>
                 </tr>
-              );
+              )
             })}
           </tbody>
         </TransactionsTable>
       </TransactionsContainer>
     </div>
-  );
+  )
 }
