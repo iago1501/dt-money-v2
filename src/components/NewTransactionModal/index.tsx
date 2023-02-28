@@ -10,7 +10,7 @@ import {
 import * as z from 'zod'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useTransactions } from '../../contexts/TransactionsContext'
+import { useCreateTransaction } from '../../contexts/TransactionsContext'
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -22,7 +22,7 @@ const newTransactionFormSchema = z.object({
 type NewTransactionsFormInputs = z.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
-  const { createTransaction } = useTransactions()
+  const createTransaction = useCreateTransaction()
   const {
     register,
     handleSubmit,

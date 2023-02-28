@@ -10,7 +10,7 @@ import {
 } from './styles'
 
 export function Transactions() {
-  const { transactions } = useTransactions()
+  const transactions = useTransactions()
 
   return (
     <div>
